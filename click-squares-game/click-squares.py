@@ -8,7 +8,7 @@ window.configure(bg = "white")
 window.minsize(500, 500)
 window.title("Click Squares Game")
 
-# Widgets
+# Widgets (without commands)
 
 btn2 = tkinter.Button(window, bg = "black")
 btn2.place(height = 50, width = 50, relx = 0, rely = 1.0, anchor = "sw")
@@ -22,18 +22,12 @@ btn4.place(height = 50, width = 50, rely = 1.0, relx = 1.0, anchor = "se")
 btn5 = tkinter.Button(window, bg = "black")
 btn5.place(height = 50, width = 50, relx = 1.0, rely = 0, anchor = "ne")
 
-btn1 = tkinter.Button(window, bg = "red", command = s_change)
-btn1.place(height = 50, width = 50, relx = 1.0, rely = 0, anchor = "ne")
-
 s = 0
 score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
 score.place(rely= 0.5, relx = 0.5, anchor = "center")
 
 text = tkinter.Label(window, text = "GET 10 TO WIN", font = ("Helvetica", 35), bg = "white")
 text.place(rely= 0.3, relx = 0.5, anchor = "center")
-
-start = tkinter.Button(window, bg = "red", text = "START", font = ("Helvetica", 20), command = button_trigger)
-start.place(rely = 0.7, relx = 0.5, anchor = "center")
 
 win = tkinter.Label(window, text = "YOU WON!", font = ("Helvetica", 35), bg = "white")
 
@@ -86,5 +80,13 @@ def s_change():
 	click_change()
 	return
 	# This adds 1 to the scoreboard once the player successfully clicked on the red square
+
+# Widgets (with commands)
+
+btn1 = tkinter.Button(window, bg = "red", command = s_change)
+btn1.place(height = 50, width = 50, relx = 1.0, rely = 0, anchor = "ne")
+
+start = tkinter.Button(window, bg = "red", text = "START", font = ("Helvetica", 20), command = button_trigger)
+start.place(rely = 0.7, relx = 0.5, anchor = "center")
 
 window.mainloop()
