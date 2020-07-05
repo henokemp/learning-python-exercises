@@ -23,14 +23,20 @@ btn1 = tkinter.Button(window, bg = "red", command = s_change)
 btn1.place(height = 50, width = 50, relx = 1.0, rely = 0, anchor = "ne")
 
 s = 0
-score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white").place(rely= 0.5, relx = 0.5, anchor = "center")
+score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
+score.place(rely= 0.5, relx = 0.5, anchor = "center")
 
-start = tkinter.Button(window, bg = "red", text = "START", font = ("Helvetica", 20), command = button_trigger).place(rely = 0.7, relx = 0.5, anchor = "center")
+text = tkinter.Label(window, text = "GET 20 TO WIN", font = ("Helvetica", 35), bg = "white")
+text.place(rely= 0.3, relx = 0.5, anchor = "center")
+
+start = tkinter.Button(window, bg = "red", text = "START", font = ("Helvetica", 20), command = button_trigger)
+start.place(rely = 0.7, relx = 0.5, anchor = "center")
 
 def s_change():
 	global s
 	s = s + 1
-	score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white").place(rely = 0.5, relx = 0.5, anchor = "center")
+	score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
+	score.place(rely = 0.5, relx = 0.5, anchor = "center")
 	click_change()
 	return
 	# This adds 1 to the scoreboard once the player successfully clicked on the red square
