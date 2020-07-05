@@ -1,11 +1,14 @@
 import tkinter
 import random
-import root
+
+# Window
 
 window = tkinter.Tk()
 window.configure(bg = "white")
 window.minsize(500, 500)
 window.title("Click Squares Game")
+
+# Widgets
 
 btn2 = tkinter.Button(window, bg = "black")
 btn2.place(height = 50, width = 50, relx = 0, rely = 1.0, anchor = "sw")
@@ -26,20 +29,15 @@ s = 0
 score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
 score.place(rely= 0.5, relx = 0.5, anchor = "center")
 
-text = tkinter.Label(window, text = "GET 20 TO WIN", font = ("Helvetica", 35), bg = "white")
+text = tkinter.Label(window, text = "GET 10 TO WIN", font = ("Helvetica", 35), bg = "white")
 text.place(rely= 0.3, relx = 0.5, anchor = "center")
 
 start = tkinter.Button(window, bg = "red", text = "START", font = ("Helvetica", 20), command = button_trigger)
 start.place(rely = 0.7, relx = 0.5, anchor = "center")
 
-def s_change():
-	global s
-	s = s + 1
-	score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
-	score.place(rely = 0.5, relx = 0.5, anchor = "center")
-	click_change()
-	return
-	# This adds 1 to the scoreboard once the player successfully clicked on the red square
+win = tkinter.Label(window, text = "YOU WON!", font = ("Helvetica", 35), bg = "white")
+
+# Functions
 
 def c_change1():
 	btn1.place(height = 50, width = 50, relx = 0, rely = 1.0, anchor = "sw")
@@ -57,19 +55,36 @@ def c_change4():
 
 change_list = [c_change1, c_change2, c_change3, c_change4]
 
-def button_trigger():
-	time_change()
-	start.destroy()
-
 def click_change():
 	random.choice(change_list)()
 	return
 	# This function triggers the position change of the red square to one of the four locations at random upon successful click by player
 
+def win_cond():
+	if s >= 10:
+		btn1.destroy()
+		text.destroy()
+		win.place(rely= 0.3, relx = 0.5, anchor = "center")
+	# This controls the win condition of the game, based on a certain score and displays the win screen
+
 def time_change():
 	btn1.after(random.randint(500, 2000), click_change)
 	btn1.after(500, time_change)
+	win_cond()
 	return
 	# This changes the position of the red square after a random generated amount of time between 500 and 2000 ms and repeats the function
+
+def button_trigger():
+	time_change()
+	start.destroy()
+
+def s_change():
+	global s
+	s = s + 1
+	score = tkinter.Label(window, text = s, font = ("Helvetica", 40), bg = "white")
+	score.place(rely = 0.5, relx = 0.5, anchor = "center")
+	click_change()
+	return
+	# This adds 1 to the scoreboard once the player successfully clicked on the red square
 
 window.mainloop()
