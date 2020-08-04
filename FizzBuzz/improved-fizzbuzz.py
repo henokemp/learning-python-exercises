@@ -16,9 +16,3 @@ for i in range(30):
 		print(word1)
 		continue
 	print(i)
-
-
-
-
-
-
